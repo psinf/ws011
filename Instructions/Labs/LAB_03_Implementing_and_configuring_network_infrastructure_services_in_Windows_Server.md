@@ -74,7 +74,7 @@ The main tasks for this exercise are as follows:
     - Lease duration: **4 days**
 1. In **Server Manager**, open the **DHCP management console**.
 1. In the **DHCP management console**, add all authorized servers.
-1. On the DHCP server **172.16.10.12**, in the **ContosoClients** scope, add the scope option **006 DNS Servers** with the value **172.16.10.10**.
+1. On the DHCP server **172.16.0.12**, in the **ContosoClients** scope, add the scope option **006 DNS Servers** with the value **172.16.0.10**.
 
 ### Task 4: Configure DHCP Failover
 
@@ -89,17 +89,17 @@ The main tasks for this exercise are as follows:
     - Shared Secret: **DHCP-Failover**
 1. Verify that **SEA-SVR1** only has one scope.
 1. Verify that **SEA-DC1** has two scopes.
-1. Under **SEA-DC1**, for the **Contoso** scope, configure failover with **172.16.10.12**, and reuse the existing failover relationship.
+1. Under **SEA-DC1**, for the **Contoso** scope, configure failover with **172.16.0.12**, and reuse the existing failover relationship.
 1. Verify that both scopes now appear on **SEA-SVR1**.
 
 ### Task 5: Verify DHCP functionality
 
 1. On **SEA-CL1**, configure the network connection to obtain an IP address and DNS server addresses automatically.
-1. Examine the configuration status of the network connection to verify that the DHCP lease was obtained from **SEA-SVR2 (172.16.10.12)**.
+1. Examine the configuration status of the network connection to verify that the DHCP lease was obtained from **SEA-SVR2 (172.16.0.12)**.
 1. Disable the Ethernet network connection.
 1. On **SEA-ADM1**, in the **DHCP management console**, verify that both DHCP servers list the lease for **SEA-CL1** in the **Contoso** scope.
-1. Stop the **DHCP** service on **SEA-SVR2 (172.16.10.12)**.
-1. On **SEA-CL1**, enable the Ethernet network connection, and then verify that the same DHCP lease is obtained from **SEA-DC1 (172.16.10.10)**.
+1. Stop the **DHCP** service on **SEA-SVR2 (172.16.0.12)**.
+1. On **SEA-CL1**, enable the Ethernet network connection, and then verify that the same DHCP lease is obtained from **SEA-DC1 (172.16.0.10)**.
 
 ## Exercise 2: Deploying and configuring DNS
 
@@ -150,7 +150,7 @@ The main tasks for this exercise are as follows:
 
 ### Task 4: Configure conditional forwarding
 
-1. On **SEA-ADM1**, in **DNS Manager** for **SEA-SVR1**, create a new conditional forwarder for **```Contoso.com```** that directs requests to **172.16.10.10**.
+1. On **SEA-ADM1**, in **DNS Manager** for **SEA-SVR1**, create a new conditional forwarder for **```Contoso.com```** that directs requests to **172.16.0.10**.
 1. Open a Windows PowerShell prompt and run the following command to verify that the conditional forwarder is working:
 
     ```powershell
@@ -163,7 +163,7 @@ The main tasks for this exercise are as follows:
 1. At the **Windows PowerShell** prompt, run the following command to create a head office subnet:
 
     ```powershell
-    Add-DnsServerClientSubnet -Name "HeadOfficeSubnet" -IPv4Subnet "172.16.10.0/24"
+    Add-DnsServerClientSubnet -Name "HeadOfficeSubnet" -IPv4Subnet "172.16.0.0/24"
     ```
 
 1. Run the following command to create a zone scope for head office:
@@ -186,7 +186,7 @@ The main tasks for this exercise are as follows:
 
 ### Task 6: Verify DNS policy functionality
 
-1. On **SEA-CL1**, open a Windows PowerShell prompt, enter **ipconfig**, and then select Enter to verify that **SEA-CL1** is on the **HeadOffice subnet (172.16.10.0)**.
+1. On **SEA-CL1**, open a Windows PowerShell prompt, enter **ipconfig**, and then select Enter to verify that **SEA-CL1** is on the **HeadOffice subnet (172.16.0.0)**.
 1. At the Windows PowerShell prompt, run the following command to test the DNS policy:
 
     ```powershell
@@ -197,8 +197,8 @@ The main tasks for this exercise are as follows:
 1. Update **SEA-CL1** to use the following IPv4 configuration:
     - IP Address: **172.16.11.100**
     - Subnet mask: **255.255.0.0**
-    - Default gateway: **172.16.10.1**
-    - Preferred DNS server: **172.16.10.10**
+    - Default gateway: **172.16.0.1**
+    - Preferred DNS server: **172.16.0.10**
 1. At the Windows PowerShell prompt, run the following command to test the DNS policy:
 
     ```powershell
@@ -207,4 +207,4 @@ The main tasks for this exercise are as follows:
 
 1. Verify that **testapp** resolved to **172.30.99.234**.
 
-> **Note:** When the client is on the HeadOffice subnet (172.16.10.0/24), the record ```testapp.treyresearch.net``` resolves to 172.30.99.100. When the client is moved off of the HeadOffice subnet, ```testapp.treyresearch.net``` resolves to 172.30.99.234.
+> **Note:** When the client is on the HeadOffice subnet (172.16.0.0/24), the record ```testapp.treyresearch.net``` resolves to 172.30.99.100. When the client is moved off of the HeadOffice subnet, ```testapp.treyresearch.net``` resolves to 172.30.99.234.

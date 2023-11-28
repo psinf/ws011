@@ -46,10 +46,10 @@ lab:
 1. In **Server Manager**, select **Tools**, and then select **DHCP**.
 1. In the DHCP window, select **Action**, and then select **Add Server**.
 1. In the **Add Server** dialog box, select **This authorized DHCP server**, and then select **OK**.
-1. In DHCP window, expand **172.16.10.12**, expand **IPv4**, expand **Scope [10.100.150.0] ContosoClients**, and then select **Scope Options**.
+1. In DHCP window, expand **172.16.0.12**, expand **IPv4**, expand **Scope [10.100.150.0] ContosoClients**, and then select **Scope Options**.
 1. Select the **Action** menu, and then select **Configure Options**.
 1. In the **Scope Options** dialog box, select the **006 DNS Servers** check box.
-1. In the IP address box, enter **172.16.10.10**, select **Add**, and then select **OK**.
+1. In the IP address box, enter **172.16.0.10**, select **Add**, and then select **OK**.
 
 ### Task 4: Configure DHCP Failover
 
@@ -67,14 +67,14 @@ lab:
     - Shared Secret: **DHCP-Failover**
 1. Select **Finish**.
 1. In the **Configure Failover** dialog box, select **Close**.
-1. Under **172.16.10.12**, select **IPv4**, and then verify that only one scope is listed.
+1. Under **172.16.0.12**, select **IPv4**, and then verify that only one scope is listed.
 1. Expand **SEA-DC1**, select **IPv4**, and then verify that two scopes are listed.
 1. Select **Scope [172.16.0.0] Contoso**, select the **Action** menu, and then select **Configure Failover**.
 1. In the **Configure Failover** window, select **Next**.
-1. On the **Specify the partner server to use for failover** screen, in the **Partner Server** box, enter **172.16.10.12**, select the **Reuse existing failover relationships configured with this server (if any exist)** check box, and then select **Next**.
+1. On the **Specify the partner server to use for failover** screen, in the **Partner Server** box, enter **172.16.0.12**, select the **Reuse existing failover relationships configured with this server (if any exist)** check box, and then select **Next**.
 1. On the **Select from failover relationships which are already configured on this server** screen, select **Next**, and then select **Finish**.
 1. In the **Configure Failover** dialog box, select **Close**.
-1. Under **172.16.10.12**, select **IPv4**, and then verify that both scopes are listed. If necessary, select **F5** to refresh.
+1. Under **172.16.0.12**, select **IPv4**, and then verify that both scopes are listed. If necessary, select **F5** to refresh.
 
 ### Task 5: Verify DHCP functionality
 
@@ -84,17 +84,17 @@ lab:
 1. In the **Ethernet Properties** dialog box, select **Internet Protocol Version 4 (TCP/IPv4)**, and then select **Properties**.
 1. In the **Internet Protocol Version 4 (TCP/IPv4) Properties** dialog box, select **Obtain an IP address automatically**, select **Obtain DNS server address automatically**, and then select **OK**.
 1. Select **Close**, and then select **Details**.
-1. In the **Network Connection Details** dialog box, verify that DHCP is enabled, an IP address was obtained, and that the **SEA-SVR2 (172.16.10.12)** DHCP server issued the lease.
+1. In the **Network Connection Details** dialog box, verify that DHCP is enabled, an IP address was obtained, and that the **SEA-SVR2 (172.16.0.12)** DHCP server issued the lease.
 1. Select **Close**, and then select **Disable**.
-1. On **SEA-ADM1**, in the **DHCP** window, under **172.16.10.12**, under **IPv4**, expand **Scope [172.16.0.0] Contoso**, and then select **Address Leases**.
+1. On **SEA-ADM1**, in the **DHCP** window, under **172.16.0.12**, under **IPv4**, expand **Scope [172.16.0.0] Contoso**, and then select **Address Leases**.
 1. 1. Verify that **SEA-CL1** is listed as a lease.
 1. Under **SEA-DC1**, under **IPv4**, expand **Scope [172.16.0.0] Contoso**, and then select **Address Leases**.
 1. Verify that **SEA-CL1** is listed as a lease.
-1. Select **172.16.10.12**, select the **Action** menu, select **All Tasks**, and then select **Stop**.
+1. Select **172.16.0.12**, select the **Action** menu, select **All Tasks**, and then select **Stop**.
 1. Close all open windows on **SEA-ADM1**.
 1. On **SEA-CL1**, in the **Network and Sharing Center**, on the left **navigation** pane, select **Change adapter settings**.
 1. In the **Network Connections** window, right-click or access the context menu for **Ethernet**, and then select **Enable**.
-1. In the menu bar, select **View status of this connection**, and then select **Details**. Verify that the DHCP server is now **SEA-DC1 (172.16.10.10)**.
+1. In the menu bar, select **View status of this connection**, and then select **Details**. Verify that the DHCP server is now **SEA-DC1 (172.16.0.10)**.
 1. Close all open windows on **SEA-CL1**.
 
 ## Exercise 2: Deploying and configuring DNS
@@ -154,7 +154,7 @@ lab:
 1. On **SEA-ADM1**, in **DNS Manager**, expand **SEA-SVR1**, and then select **Conditional Forwarders**.
 1. Select **Action**, and then select **New Conditional Forwarder**.
 1. In the **New Conditional Forwarder** dialog box, in the **DNS Domain** box, enter **```Contoso.com```**.
-1. In the **IP addresses of the master servers** box, enter **172.16.10.10**, and then select **Enter**.
+1. In the **IP addresses of the master servers** box, enter **172.16.0.10**, and then select **Enter**.
 1. Select **OK**.
 1. Close **DNS Manager** and **Server Manager**.
 1. Select **Start**, and then select **Windows PowerShell**.
@@ -173,7 +173,7 @@ lab:
 1. To create a head office subnet, enter the following, and then select Enter:
 
     ```powershell
-    Add-DnsServerClientSubnet -Name "HeadOfficeSubnet" -IPv4Subnet "172.16.10.0/24"
+    Add-DnsServerClientSubnet -Name "HeadOfficeSubnet" -IPv4Subnet "172.16.0.0/24"
     ```
 
 1. To create a zone scope for head office, enter the following, and then select Enter:
@@ -208,8 +208,8 @@ lab:
 1. In the **Internet Protocol Version 4 (TCP/IPv4) Properties** dialog box, select **Use the following IP address**, enter the following information, and then select **OK**:
     - IP Address: **172.16.11.100**
     - Subnet mask: **255.255.0.0**
-    - Default gateway: **172.16.10.1**
-    - Preferred DNS server: **172.16.10.10**
+    - Default gateway: **172.16.0.1**
+    - Preferred DNS server: **172.16.0.10**
 1. Select **Close** twice.
 1. At the **Windows PowerShell** prompt, enter the following, and then select Enter:
 
@@ -220,4 +220,4 @@ lab:
 1. Notice that the name resolves to **172.30.99.234** because the client is no longer on the HeadOffice subnet.
 1. Close all open windows.
 
-    > **Note:** When the client is on the HeadOffice subnet **(172.16.10.0/24)** the record testapp.```treyresearch.net``` resolves to **172.30.99.100**. When the client is moved off of the HeadOffice subnet, ```testapp.treyresearch.net``` resolves to **172.30.99.234**.
+    > **Note:** When the client is on the HeadOffice subnet **(172.16.0.0/24)** the record testapp.```treyresearch.net``` resolves to **172.30.99.100**. When the client is moved off of the HeadOffice subnet, ```testapp.treyresearch.net``` resolves to **172.30.99.234**.

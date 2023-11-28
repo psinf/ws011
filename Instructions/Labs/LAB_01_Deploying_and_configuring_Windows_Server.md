@@ -69,11 +69,11 @@ The main tasks for this exercise are as follows:
 
 ### Task 3: Install Features on Demand on Server Core
 
-1. Mount the **Win2019_FOD.iso** image file to **drive D** of **SEA-SVR4**.
+1. Mount the **Win2019_FOD.iso** image file to **drive E** of **SEA-SVR4**.
 1. Sign in as **Contoso\Administrator**.
 1. At the command prompt, run **Explorer.exe**. Note that command fails and returns an error.
 1. Open PowerShell.
-1. At the PowerShell prompt, run ```Add-Windowscapability -Online -Name Servercore.Appcompatibility~~~~0.0.1.0 -Source D:```.
+1. At the PowerShell prompt, run ```Add-Windowscapability -Online -Name Servercore.Appcompatibility~~~~0.0.1.0 -Source E:```.
 1. Run **Restart-computer**, and then sign in as **Administrator**.
 1. Run **Explorer.exe**. Note that File Explorer now opens successfully.
 

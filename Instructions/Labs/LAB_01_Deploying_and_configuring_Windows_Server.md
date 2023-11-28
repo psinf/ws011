@@ -55,12 +55,12 @@ The main tasks for this exercise are as follows:
 1. Modify adapter index #1.
 1. Modify the following settings:
 
-   - IP: **172.16.10.15**
+   - IP: **172.16.0.15**
 
    - Subnet mask: **255.255.0.0**
 
-   - Default Gateway: **172.16.10.1**
-1. Set the DNS server to be **172.16.10.10**. Leave the alternate DNS server blank.
+   - Default Gateway: **172.16.0.1**
+1. Set the DNS server to be **172.16.0.10**. Leave the alternate DNS server blank.
 1. Return to the main menu and exit to command line.
 1. Open PowerShell.
 1. Run the ```Rename-Computer -NewName SEA-SVR4 -restart -force``` cmdlet.

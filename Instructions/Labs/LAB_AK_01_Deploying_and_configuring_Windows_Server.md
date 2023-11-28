@@ -77,11 +77,11 @@ The main tasks for this exercise are as follows:
 
 ### Task 3: Install Features on Demand on Server Core
 
-1. Mount the **Win2019_FOD.iso** image file to drive D of SEA-SVR4.
+1. Mount the **Win2019_FOD.iso** image file to drive E of SEA-SVR4.
 1. On SEA-SVR4, select Ctrl+Alt+Del, enter the password **Pa55w.rd**, and then select Enter.
 1. At the command prompt, enter **Explorer.exe**. Note that the command does not run and returns an error.
 1. At the command prompt, enter **PowerShell**, and then select Enter.
-1. At the PowerShell prompt, enter ```Add-Windowscapability -Online -Name Servercore.Appcompatibility~~~~0.0.1.0 -Source D:```.
+1. At the PowerShell prompt, enter ```Add-Windowscapability -Online -Name Servercore.Appcompatibility~~~~0.0.1.0 -Source E:```.
 1. After completion, to restart the server and then sign in with the password **Pa55w.rd** at the PowerShell prompt, enter **Restart-computer**.
 1. At the command prompt, enter **Explorer.exe**. Note that File Explorer now opens successfully.
 

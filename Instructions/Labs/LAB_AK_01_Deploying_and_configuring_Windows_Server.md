@@ -62,11 +62,11 @@ The main tasks for this exercise are as follows:
 1. To change adapter index #1, enter **1**, and then select Enter.
 1. To set the network adapter address, enter **1**, and then select Enter.
 1. To set a static IP address, enter **S**, and then select Enter.
-1. To set the IP address, enter **172.16.10.15**, and then select Enter.
+1. To set the IP address, enter **172.16.0.15**, and then select Enter.
 1. To set the subnet mask, enter **255.255.0.0**, and then select Enter.
-1. To set the Default Gateway and observe the resulting settings, enter **172.16.10.1**, and then select Enter.
+1. To set the Default Gateway and observe the resulting settings, enter **172.16.0.1**, and then select Enter.
 1. To set the Domain Name System (DNS) server, enter **2**, and then select Enter.
-1. Enter **172.16.10.10**, and then select Enter. Then, to dismiss the message box, select **OK**. To leave the alternate DNS server blank, select Enter.
+1. Enter **172.16.0.10**, and then select Enter. Then, to dismiss the message box, select **OK**. To leave the alternate DNS server blank, select Enter.
 1. To return to the main menu, enter **4**, and then select Enter.
 1. To exit to Command Line, enter **15**, and then select Enter.
 1. At the command prompt, enter **PowerShell**, and then select Enter.
